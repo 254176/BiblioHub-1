@@ -24,7 +24,7 @@ INSERT INTO Users
 
 -- Insert data into the Transactions table
 INSERT INTO Transactions
-       (TransactionID, UserID, InventoryID, TransactionType, TransactionDate, DueDate, State)
+       (TransactionID, UserID, InventoryID, TransactionType, TransactionDate, DueDate, Status)
        VALUES
        -- The librarian (Charlie) registers four books…
        (1001, 3, 1, 2, '2024-04-01 09:00:00', NULL, true),

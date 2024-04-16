@@ -37,7 +37,7 @@ CREATE TABLE Transactions (
 	TransactionType INT NOT NULL,
 	TransactionDate TIMESTAMP NOT NULL,
 	DueDate TIMESTAMP NOT NULL,
-	State BOOLEAN NOT NULL,
+	Status BOOLEAN NOT NULL,
 	-- Our primary key.
 	PRIMARY KEY(TransactionID),
 	-- If a user revokes their library card/requests account deletion, do

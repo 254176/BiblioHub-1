@@ -42,7 +42,7 @@ die( $e->getMessage() );
 				<?php
 				// Fetch book log data from the database and populate the table
 				$statement = <<<END
-								SELECT u.Name, u.UserID, b.Title, b.ISBN, t.TransactionType, t.TransactionDate, t.DueDate, t.State
+								SELECT u.Name, u.UserID, b.Title, b.ISBN, t.TransactionType, t.TransactionDate, t.DueDate, t.Status
 								FROM Books as b, Inventory as i, Transactions as t, Users as u
 								WHERE b.ISBN = i.ISBN AND t.InventoryID = i.InventoryID
 								AND u.UserID = t.UserID
@@ -61,7 +61,7 @@ die( $e->getMessage() );
 				echo("<td>" . $row['TransactionDate'] . "</td>");
 				echo("<td>" . $row['DueDate'] . "</td>");
 				echo("<td>" . $transaction_types[$row['TransactionType']] . "</td>");
-				echo("<td>" . ($row['State'] ? "✓" : "⦵") . "</td>");
+				echo("<td>" . ($row['Status'] ? "✓" : "⦵") . "</td>");
 				echo("</tr>");
 				}
 				?>
