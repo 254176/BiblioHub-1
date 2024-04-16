@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "Event Management";
+include("template/header.php");
+?>
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Event Management</title>
-	</head>
+<!-- Form for adding an event -->
 
-	<body>
-		<h1>Event Management</h1>
+<h2>Add Event</h2>
 
-		<!-- Form for adding an event -->
-
-		<h2>Add Event</h2>
-
-		<form action="add_event.php" method="post">
-			<!-- Input fields for event details -->
-			<button type="submit">Add Event</button>
-		</form>
+<form action="add_event.php" method="post">
+	<!-- Input fields for event details -->
+	<button type="submit">Add Event</button>
+</form>
 
 
-		<!-- Form for updating an event -->
+<!-- Form for updating an event -->
 
-		<h2>Update Event</h2>
+<h2>Update Event</h2>
 
-		<form action="update_event.php" method="post">
-			<!-- Input fields for event details -->
-			<button type="submit">Update Event</button>
-		</form>
+<form action="update_event.php" method="post">
+	<!-- Input fields for event details -->
+	<button type="submit">Update Event</button>
+</form>
 
 
-		<!-- Form for canceling an event -->
+<!-- Form for canceling an event -->
 
-		<h2>Cancel Event</h2>
+<h2>Cancel Event</h2>
 
-		<form action="cancel_event.php" method="post">
-			<label for="eventIdToCancel">Event ID to Cancel:</label>
-			<input type="text" id="eventIdToCancel" name="eventIdToCancel" required>
+<form action="cancel_event.php" method="post">
+	<label for="eventIdToCancel">Event ID to Cancel:</label>
+	<input type="text" id="eventIdToCancel" name="eventIdToCancel" required>
 
-			<button type="submit">Cancel Event</button>
-		</form>
-	</body>
-</html>
+	<button type="submit">Cancel Event</button>
+</form>

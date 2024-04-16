@@ -1,44 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "User Management";
+include("template/header.php");
+?>
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>User Management</title>
-	</head>
+<!-- Form for adding a user -->
 
+<h2>Add User</h2>
 
-	<body>
-		<h1>User Management</h1>
-
-		<!-- Form for adding a user -->
-
-		<h2>Add User</h2>
-
-		<form action="add_user.php" method="post">
-			<!-- Input fields for user details -->
-			<button type="submit">Add User</button>
-		</form>
+<form action="add_user.php" method="post">
+	<!-- Input fields for user details -->
+	<button type="submit">Add User</button>
+</form>
 
 
-		<!-- Form for updating a user -->
+<!-- Form for updating a user -->
 
-		<h2>Update User</h2>
+<h2>Update User</h2>
 
-		<form action="update_user.php" method="post">
-			<!-- Input fields for user details -->
-			<button type="submit">Update User</button>
-		</form>
+<form action="update_user.php" method="post">
+	<!-- Input fields for user details -->
+	<button type="submit">Update User</button>
+</form>
 
 
-		<!-- Form for deleting a user -->
+<!-- Form for deleting a user -->
 
-		<h2>Delete User</h2>
-		<form action="delete_user.php" method="post">
-			<label for="userIdToDelete">User ID to Delete:</label>
-			<input type="text" id="userIdToDelete" name="userIdToDelete" required>
+<h2>Delete User</h2>
+<form action="delete_user.php" method="post">
+	<label for="userIdToDelete">User ID to Delete:</label>
+	<input type="text" id="userIdToDelete" name="userIdToDelete" required>
 
-			<button type="submit">Delete User</button>
-		</form>
-	</body>
-</html>
+	<button type="submit">Delete User</button>
+</form>
