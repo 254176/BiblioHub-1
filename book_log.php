@@ -1,3 +1,14 @@
+<?php
+require_once('config.php');
+try {
+$db = new PDO(DBCONNSTRING,DBUSER,DBPASS);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+die( $e->getMessage() );
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,18 +40,20 @@
 			<tbody>
 				<?php
 				// Fetch book log data from the database and populate the table
-				// Example:
-				// foreach ($bookLogData as $book) {
-				//     echo "<tr>";
-				//     echo "<td>{$book['transaction_id']}</td>";
-				//     echo "<td>{$book['user_id']}</td>";
-				//     echo "<td>{$book['inventory_id']}</td>";
-				//     echo "<td>{$book['transaction_type']}</td>";
-				//     echo "<td>{$book['transaction_date']}</td>";
-				//     echo "<td>{$book['due_date']}</td>";
-				//     echo "<td>{$book['status']}</td>";
-				//     echo "</tr>";
-				// }
+				$statement = 'select * from Transactions';
+				$result = $db->query($statement);
+				while ($row = $result->fetch())
+				{
+					echo("<tr>");
+					echo("<td>" . $row['TransactionID'] . "</td>");
+					echo("<td>" . $row['UserID'] . "</td>");
+					echo("<td>" . $row['InventoryID'] . "</td>");
+					echo("<td>" . $row['TransactionType'] . "</td>");
+					echo("<td>" . $row['TransactionDate'] . "</td>");
+					echo("<td>" . $row['DueDate'] . "</td>");
+					echo("<td>" . $row['State'] . "</td>");
+					echo("</tr>");
+				}
 				?>
 			</tbody>
 		</table>
