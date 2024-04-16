@@ -1,0 +1,7 @@
+<?php
+define('DBHOST', 'localhost');
+define('DBNAME', 'BiblioHub');
+define('DBUSER', 'your_username');
+define('DBPASS', 'your_password');
+define('DBCONNSTRING', 'mysql:dbname=' . DBNAME . ';charset=utf8mb4;');
+?>
