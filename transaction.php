@@ -1,4 +1,7 @@
 <?php
+require_once('lib/auth.php');
+ensure_admin();
+
 require_once('lib/db.php');
 
 // Check if form is submitted for transaction

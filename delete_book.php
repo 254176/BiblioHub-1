@@ -1,9 +1,11 @@
 <?php
-// Database connection
-require_once('lib/db.php');
+require_once('lib/auth.php');
+ensure_admin();
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	require_once('lib/db.php');
+
 	// Retrieve form data
 	$isbnToDelete = $_POST["isbnToDelete"];
 

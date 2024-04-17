@@ -1,8 +1,11 @@
 <?php
-require_once('lib/db.php');
+require_once('lib/auth.php');
+ensure_admin();
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	require_once('lib/db.php');
+
 	// Retrieve form data
 	$title = $_POST["title"];
 	$author = $_POST["author"];

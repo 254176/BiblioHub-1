@@ -1,4 +1,6 @@
 <?php
+require_once('lib/auth.php');
+ensure_admin();
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

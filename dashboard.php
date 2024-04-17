@@ -1,6 +1,7 @@
 <?php
 $title = "Dashboard";
 include("lib/header.php");
+include("lib/auth.php");
 ?>
 
 <h2>Book Transaction</h2>
