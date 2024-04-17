@@ -1,6 +1,9 @@
 <?php
 $title = "Logs";
 include("lib/header.php");
+require_once('lib/auth.php');
+ensure_admin();
+
 require_once('lib/db.php');
 ?>
 
@@ -108,6 +111,41 @@ require_once('lib/db.php');
 		?>
 	</table>
 	<span><?php echo $result->num_rows ?> results</span>
+</section>
+
+<section>
+	<h2>User Log</h2>
+	<table border="1">
+		<tr>
+			<th>User ID</th>
+			<th>Role</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Password</th>
+		</tr>
+		<?php
+		// Select data from Users table
+		$sql = "SELECT * FROM Users";
+		$result = $conn->query($sql);
+
+		// Output data of each row
+		if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+				echo "<tr>";
+				echo "<td>" . $row["UserID"] . "</td>";
+				echo "<td>" . $row["Role"] . "</td>";
+				echo "<td>" . $row["Name"] . "</td>";
+				echo "<td>" . $row["Email"] . "</td>";
+				echo "<td>" . $row["Address"] . "</td>";
+				echo "<td>" . $row["Password"] . "</td>";
+				echo "</tr>";
+			}
+		} else {
+			echo "<tr><td colspan='6'>0 results</td></tr>";
+		}
+		?>
+	</table>
 </section>
 
 <?php

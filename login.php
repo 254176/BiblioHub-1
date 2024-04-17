@@ -1,4 +1,5 @@
 <?php
+require_once('lib/auth.php');
 require_once('lib/db.php');
 
 // Get username and password from form submission
@@ -11,6 +12,10 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	// User found, redirect to dashboard or home page
+	$user_row = $result->fetch_assoc();
+	$_SESSION['user'] = $user_row['UserID'];
+	$_SESSION['name'] = $user_row['Name'];
+	$_SESSION['role'] = $user_row['Role'];
 	header("Location: dashboard.php");
 } else {
 	// Check if the username exists
