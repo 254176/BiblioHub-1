@@ -42,14 +42,23 @@ function render_book($row) {
 		SELECT b.Title, b.Author, b.ISBN, b.Genre, t.Status
 		FROM Books as b, Inventory as i, Transactions as t
 		WHERE b.ISBN = i.ISBN AND i.InventoryID = t.InventoryID
+		AND t.TransactionID IN
+		( SELECT t1.TransactionID
+			FROM Transactions as t1
+			JOIN (
+				SELECT InventoryID, MAX(TransactionDate) AS MaxDate
+				FROM Transactions
+				GROUP BY InventoryID
+			) t2
+			ON t1.InventoryID = t2.InventoryID AND t1.TransactionDate = t2.MaxDate
+		);
 		END;
 
 		$result = $conn->query($statement);
-		while ($row = $result->fetch())
+		while ($row = $result->fetch_assoc())
 		{
 			render_book($row);
 		}
 		?>
 	</tbody>
 </table>
-
