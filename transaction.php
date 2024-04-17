@@ -1,17 +1,5 @@
 <?php
-// Database connection parameters
-$servername = "localhost";
-$username = "veom-mysql";
-$password = "nemade777";
-$dbname = "library";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once('lib/db.php');
 
 // Check if form is submitted for transaction
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -66,3 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close connection
 $conn->close();
+?>

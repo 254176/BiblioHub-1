@@ -1,17 +1,5 @@
 <?php
-// Database connection details
-$servername = "localhost";
-$username = "veom-mysql";
-$password = "nemade777";
-$dbname = "library";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once('lib/db.php');
 
 // Get username and password from form submission
 $username = $_POST['username'];
@@ -39,3 +27,4 @@ if ($result->num_rows > 0) {
 
 // Close connection
 $conn->close();
+?>

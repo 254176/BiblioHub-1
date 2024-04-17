@@ -1,6 +1,6 @@
 <?php
 $title = "User Management";
-include("template/header.php");
+include("lib/header.php");
 ?>
 
 <!-- Form for adding a user -->

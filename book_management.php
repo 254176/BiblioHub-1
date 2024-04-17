@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Management</title>
-    <style>
-        .error {
-            color: red;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-<h1>Book Management</h1>
+<?php
+$title = "Book Management";
+include("lib/header.php");
+require_once('lib/db.php');
+?>
 
 <!-- Form for adding a book -->
 <h2>Add Book</h2>
@@ -93,18 +72,6 @@
         <th>Genre</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Books table
     $sql = "SELECT * FROM Books";
     $result = $conn->query($sql);
@@ -122,7 +89,6 @@
     } else {
         echo "<tr><td colspan='4'>0 results</td></tr>";
     }
-    $conn->close();
     ?>
 </table>
 <h2>Transaction Log</h2>
@@ -134,21 +100,9 @@
         <th>TransactionType</th>
         <th>TransactionDate</th>
         <th>DueDate</th>
-        <th>State</th>
+        <th>Status</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Transactions table
     $sql = "SELECT * FROM Transactions";
     $result = $conn->query($sql);
@@ -163,13 +117,12 @@
             echo "<td>" . $row["TransactionType"] . "</td>";
             echo "<td>" . $row["TransactionDate"] . "</td>";
             echo "<td>" . $row["DueDate"] . "</td>";
-            echo "<td>" . $row["State"] . "</td>";
+            echo "<td>" . $row["Status"] . "</td>";
             echo "</tr>";
         }
     } else {
         echo "<tr><td colspan='7'>0 results</td></tr>";
     }
-    $conn->close();
     ?>
 </table>
 <h2>Inventory Log</h2>
@@ -180,18 +133,6 @@
         <th>TransactionID</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Inventory table
     $sql = "SELECT * FROM Inventory";
     $result = $conn->query($sql);
@@ -212,45 +153,42 @@
     ?>
 </table>
 <script>
-    // JavaScript validation for ISBN field in Add Book form
-    document.getElementById('addBookForm').addEventListener('submit', function(event) {
-        var isbnInput = document.getElementById('isbn');
-        var isbnError = document.getElementById('isbnError');
+ // JavaScript validation for ISBN field in Add Book form
+ document.getElementById('addBookForm').addEventListener('submit', function(event) {
+     var isbnInput = document.getElementById('isbn');
+     var isbnError = document.getElementById('isbnError');
 
-        if (isbnInput.value.length !== 13) {
-            isbnError.textContent = "ISBN must be 13 digits long";
-            event.preventDefault(); // Prevent form submission
-        } else {
-            isbnError.textContent = ""; // Clear error message if ISBN is valid
-        }
-    });
+     if (isbnInput.value.length !== 13) {
+         isbnError.textContent = "ISBN must be 13 digits long";
+         event.preventDefault(); // Prevent form submission
+     } else {
+         isbnError.textContent = ""; // Clear error message if ISBN is valid
+     }
+ });
 
-    // JavaScript validation for ISBN field in Update Book form
-    document.getElementById('updateBookForm').addEventListener('submit', function(event) {
-        var isbnToUpdateInput = document.getElementById('isbnToUpdate');
-        var isbnToUpdateError = document.getElementById('isbnToUpdateError');
+ // JavaScript validation for ISBN field in Update Book form
+ document.getElementById('updateBookForm').addEventListener('submit', function(event) {
+     var isbnToUpdateInput = document.getElementById('isbnToUpdate');
+     var isbnToUpdateError = document.getElementById('isbnToUpdateError');
 
-        if (isbnToUpdateInput.value.length !== 13) {
-            isbnToUpdateError.textContent = "ISBN must be 13 digits long";
-            event.preventDefault(); // Prevent form submission
-        } else {
-            isbnToUpdateError.textContent = ""; // Clear error message if ISBN is valid
-        }
-    });
+     if (isbnToUpdateInput.value.length !== 13) {
+         isbnToUpdateError.textContent = "ISBN must be 13 digits long";
+         event.preventDefault(); // Prevent form submission
+     } else {
+         isbnToUpdateError.textContent = ""; // Clear error message if ISBN is valid
+     }
+ });
 
-    // JavaScript validation for ISBN field in Delete Book form
-    document.getElementById('deleteBookForm').addEventListener('submit', function(event) {
-        var isbnToDeleteInput = document.getElementById('isbnToDelete');
-        var isbnToDeleteError = document.getElementById('isbnToDeleteError');
+ // JavaScript validation for ISBN field in Delete Book form
+ document.getElementById('deleteBookForm').addEventListener('submit', function(event) {
+     var isbnToDeleteInput = document.getElementById('isbnToDelete');
+     var isbnToDeleteError = document.getElementById('isbnToDeleteError');
 
-        if (isbnToDeleteInput.value.length !== 13) {
-            isbnToDeleteError.textContent = "ISBN must be 13 digits long";
-            event.preventDefault(); // Prevent form submission
-        } else {
-            isbnToDeleteError.textContent = ""; // Clear error message if ISBN is valid
-        }
-    });
+     if (isbnToDeleteInput.value.length !== 13) {
+         isbnToDeleteError.textContent = "ISBN must be 13 digits long";
+         event.preventDefault(); // Prevent form submission
+     } else {
+         isbnToDeleteError.textContent = ""; // Clear error message if ISBN is valid
+     }
+ });
 </script>
-
-</body>
-</html>

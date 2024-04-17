@@ -1,17 +1,7 @@
 <?php
-require_once('config.php');
-try {
-	$db = new PDO(DBCONNSTRING,DBUSER,DBPASS);
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-	die( $e->getMessage() );
-}
-?>
-
-<?php
 $title = "Book Catalog";
-include("template/header.php");
+include("lib/header.php");
+require_once('lib/db.php');
 
 function render_book($row) {
 	echo("<tr>");
@@ -54,7 +44,7 @@ function render_book($row) {
 		WHERE b.ISBN = i.ISBN AND i.InventoryID = t.InventoryID
 		END;
 
-		$result = $db->query($statement);
+		$result = $conn->query($statement);
 		while ($row = $result->fetch())
 		{
 			render_book($row);

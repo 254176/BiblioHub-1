@@ -1,15 +1,7 @@
 <?php
-// Establish database connection
-$servername = "localhost";
-$username = "veom-mysql";
-$password = "nemade777";
-$dbname = "library";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$title = "Book Log";
+include("lib/header.php");
+require_once('lib/db.php');
 
 // Select data from Books table
 $sql = "SELECT * FROM Books";
@@ -29,3 +21,4 @@ if ($result->num_rows > 0) {
     echo "<tr><td colspan='4'>0 results</td></tr>";
 }
 $conn->close();
+?>

@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-<h1>Welcome to the Dashboard</h1>
+<?php
+$title = "Dashboard";
+include("lib/header.php");
+require_once('lib/db.php');
+?>
 
 <h2>Book Transaction</h2>
 <form action="transaction.php" method="post">
@@ -37,18 +33,6 @@
         <th>Genre</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Books table
     $sql = "SELECT * FROM Books";
     $result = $conn->query($sql);
@@ -66,7 +50,6 @@
     } else {
         echo "<tr><td colspan='4'>0 results</td></tr>";
     }
-    $conn->close();
     ?>
 </table>
 <h2>Inventory Log</h2>
@@ -77,18 +60,6 @@
         <th>TransactionID</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Inventory table
     $sql = "SELECT * FROM Inventory";
     $result = $conn->query($sql);
@@ -105,7 +76,6 @@
     } else {
         echo "<tr><td colspan='3'>0 results</td></tr>";
     }
-    $conn->close();
     ?>
 </table>
 <h2>Transaction Log</h2>
@@ -117,21 +87,9 @@
         <th>TransactionType</th>
         <th>TransactionDate</th>
         <th>DueDate</th>
-        <th>State</th>
+        <th>Status</th>
     </tr>
     <?php
-    // Establish database connection
-    $servername = "localhost";
-    $username = "veom-mysql";
-    $password = "nemade777";
-    $dbname = "library";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Select data from Transactions table
     $sql = "SELECT * FROM Transactions";
     $result = $conn->query($sql);
@@ -146,7 +104,7 @@
             echo "<td>" . $row["TransactionType"] . "</td>";
             echo "<td>" . $row["TransactionDate"] . "</td>";
             echo "<td>" . $row["DueDate"] . "</td>";
-            echo "<td>" . $row["State"] . "</td>";
+            echo "<td>" . $row["Status"] . "</td>";
             echo "</tr>";
         }
     } else {
