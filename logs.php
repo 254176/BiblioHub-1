@@ -1,7 +1,6 @@
 <?php
 $title = "Logs";
 include("lib/header.php");
-require_once('lib/auth.php');
 ensure_admin();
 
 require_once('lib/db.php');

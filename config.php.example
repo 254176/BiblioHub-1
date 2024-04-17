@@ -1,4 +1,6 @@
 <?php
+define('SITETITLE', 'BiblioHub Library');
+
 define('DBHOST', 'localhost');
 define('DBNAME', 'BiblioHub');
 define('DBUSER', 'your_username');

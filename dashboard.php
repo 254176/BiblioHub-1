@@ -1,10 +1,9 @@
 <?php
 $title = "Dashboard";
 include("lib/header.php");
-include("lib/auth.php");
 ?>
 
-<h2>Book Transaction</h2>
+<h3>Book Transaction</h3>
 <form action="transaction.php" method="post">
 	<label for="isbn">ISBN:</label>
 	<input type="text" id="isbn" name="isbn" required><br>

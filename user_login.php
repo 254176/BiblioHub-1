@@ -1,7 +1,6 @@
 <?php
 $title = "User Login";
 include("lib/header.php");
-require_once("lib/auth.php");
 
 # If user is already logged-in, redirect.
 if (isset($_SESSION['user']))
